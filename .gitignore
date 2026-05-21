@@ -1,0 +1,17 @@
+.secrets/
+config.json
+.env
+.env.*
+.dev.vars
+node_modules/
+reports/
+*-scan.json
+reports*.json
+interview-scan.mjs
+organize-once.mjs
+migrate-old-folders-once.mjs
+split-finance-once.mjs
+.wrangler/
+cloudflare-worker/wrangler.jsonc
+!cloudflare-worker/wrangler.example.jsonc
+.DS_Store

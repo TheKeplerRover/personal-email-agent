@@ -1,0 +1,47 @@
+[
+  {
+    "receivedAt": "2026-05-21T15:10:00Z",
+    "fromName": "Maya Chen",
+    "from": "maya@example.com",
+    "subject": "Interview debrief tomorrow at 10:30 AM",
+    "preview": "Can you confirm whether tomorrow at 10:30 AM Vancouver time still works for the follow-up call?",
+    "isRead": false,
+    "importance": "high"
+  },
+  {
+    "receivedAt": "2026-05-21T14:02:00Z",
+    "fromName": "Northstar Bank",
+    "from": "alerts@example-bank.test",
+    "subject": "Security code",
+    "preview": "Your verification code is 482913. If this was not you, secure your account.",
+    "isRead": true,
+    "importance": "normal"
+  },
+  {
+    "receivedAt": "2026-05-21T13:25:00Z",
+    "fromName": "Cloud Platform",
+    "from": "billing@example-cloud.test",
+    "subject": "Monthly usage statement ready",
+    "preview": "Your May invoice and usage statement are ready. No payment action is required.",
+    "isRead": true,
+    "importance": "normal"
+  },
+  {
+    "receivedAt": "2026-05-21T12:18:00Z",
+    "fromName": "Product Newsletter",
+    "from": "news@example-newsletter.test",
+    "subject": "This week in AI tools",
+    "preview": "A roundup of launches, webinars, and promotional offers.",
+    "isRead": false,
+    "importance": "normal"
+  },
+  {
+    "receivedAt": "2026-05-20T23:43:00Z",
+    "fromName": "Jordan Lee",
+    "from": "jordan@example.com",
+    "subject": "Re: Proposal notes",
+    "preview": "Could you send the updated numbers when you get a chance? I want to review them before Friday.",
+    "isRead": false,
+    "importance": "normal"
+  }
+]

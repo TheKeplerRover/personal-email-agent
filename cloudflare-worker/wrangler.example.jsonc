@@ -1,0 +1,27 @@
+{
+  "name": "personal-email-agent",
+  "main": "src/index.js",
+  "compatibility_date": "2026-05-19",
+  "triggers": {
+    "crons": [
+      "30 14 * * *",
+      "30 15 * * *"
+    ]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "TOKEN_STORE",
+      "id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+    }
+  ],
+  "vars": {
+    "TIME_ZONE": "America/Vancouver",
+    "AI_PROVIDER": "anthropic",
+    "OPENAI_MODEL": "gpt-5.5",
+    "ANTHROPIC_MODEL": "claude-sonnet-4-6",
+    "MS_REDIRECT_URI": "http://localhost:53682/callback",
+    "MAIL_WINDOW_MODE": "generous",
+    "EMAIL_REPORTS_ENABLED": "true",
+    "PUSHOVER_ENABLED": "false"
+  }
+}

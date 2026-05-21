@@ -1,0 +1,5 @@
+{
+  "clientId": "PASTE_YOUR_AZURE_APP_CLIENT_ID_HERE",
+  "redirectUri": "http://localhost:53682/callback",
+  "scopes": ["offline_access", "User.Read", "Mail.Read"]
+}

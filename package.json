@@ -1,0 +1,16 @@
+{
+  "name": "personal-email-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "auth": "node auth.mjs",
+    "mail": "node mail.mjs 10",
+    "digest": "node digest.mjs --days 1",
+    "digest:week": "node digest.mjs --days 7",
+    "demo": "node demo/demo-digest.mjs",
+    "check": "node --check auth.mjs && node --check mail.mjs && node --check digest.mjs",
+    "check:worker": "npm --prefix cloudflare-worker run check",
+    "check:all": "npm run check && npm run check:worker"
+  }
+}
