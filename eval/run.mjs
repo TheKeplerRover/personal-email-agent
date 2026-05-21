@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { runDemoPipeline } from "./lib/demo-pipeline.mjs";
+import { runProductionSeam } from "./lib/production-seam.mjs";
 import { scoreRules } from "./lib/score-rules.mjs";
 import { printTable, summarize } from "./lib/table.mjs";
 import { judgeCase } from "./lib/judge.mjs";
@@ -14,8 +14,8 @@ const cases = await loadCases();
 const rows = [];
 
 for (const testCase of cases) {
-  const { output } = runDemoPipeline(testCase.inbox, testCase.id);
-  const score = scoreRules(testCase, output);
+  const { digest, output } = runProductionSeam(testCase.inbox, testCase.id);
+  const score = scoreRules(testCase, output, digest);
   const row = { id: testCase.id, ...score };
 
   if (useJudge) {
@@ -73,5 +73,8 @@ function validateCase(testCase, file) {
     if (!Array.isArray(testCase.expect[key])) {
       throw new Error(`${file}: expect.${key} must be an array`);
     }
+  }
+  if (testCase.expect.expected_failure && !testCase.expect.known_gap) {
+    throw new Error(`${file}: expected_failure cases must include expect.known_gap`);
   }
 }

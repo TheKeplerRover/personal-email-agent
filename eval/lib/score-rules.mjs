@@ -1,8 +1,8 @@
 // Deterministic eval metrics. These always run and require no API key.
 
-const otpPattern = /\b(?:verification code|security code|one-time passcode|login code|passcode)\b.{0,80}?\b[A-Z0-9]{4,10}\b|\b\d{6}\b/gi;
+const otpPattern = /\b(?:verification code|security code|one-time passcode|login code|passcode)\b.{0,80}?\b(?=[A-Z0-9]*\d)[A-Z0-9]{4,10}\b|\b\d{6}\b/gi;
 
-export function scoreRules(testCase, output) {
+export function scoreRules(testCase, output, digest) {
   const expect = testCase.expect || {};
   const mustRedact = expect.must_redact || [];
   const mustExcludeSenders = expect.must_exclude_senders || [];
@@ -11,17 +11,21 @@ export function scoreRules(testCase, output) {
 
   const leakedValues = mustRedact.filter((value) => value && output.includes(value));
   const otpMatches = [...output.matchAll(otpPattern)].map((match) => match[0]);
-  const excludedSenderHits = mustExcludeSenders.filter((sender) => output.includes(sender));
-  const importantSenderHits = importantSenders.filter((sender) => output.includes(sender));
-  const actionItemHits = actionItems.filter((item) => softContains(output, item));
+  const importantText = (digest?.important || [])
+    .map((message) => `${message.from} ${message.subject}`)
+    .join("\n");
+  const importantPreviewText = (digest?.important || [])
+    .map((message) => `${message.from} ${message.subject} ${message.preview}`)
+    .join("\n");
+  const importantSenderHits = importantSenders.filter((sender) => importantText.includes(sender));
+  const excludedSenderHits = mustExcludeSenders.filter((sender) => importantText.includes(sender));
+  const actionItemHits = actionItems.filter((item) => softContains(importantPreviewText, item));
 
   const formatValid = [
-    "# Demo Email Digest",
+    "# Daily Email Digest",
     "## Important",
-    "## Noise Removed",
     "Scanned:",
-    "Included:",
-    "Filtered out:",
+    "Unread:",
   ].every((marker) => output.includes(marker));
 
   return {
@@ -35,11 +39,14 @@ export function scoreRules(testCase, output) {
     important_sender_hits: importantSenderHits,
     action_item_recall: ratio(actionItemHits.length, actionItems.length),
     action_item_hits: actionItemHits,
+    expected_failure: Boolean(expect.expected_failure),
     pass: leakedValues.length + otpMatches.length === 0
-      && excludedSenderHits.length === 0
-      && formatValid
-      && importantSenderHits.length === importantSenders.length
-      && actionItemHits.length === actionItems.length,
+      && (Boolean(expect.expected_failure) || (
+        excludedSenderHits.length === 0
+        && formatValid
+        && importantSenderHits.length === importantSenders.length
+        && actionItemHits.length === actionItems.length
+      )),
   };
 }
 

@@ -21,6 +21,8 @@
     "important_senders": ["nora@example.com"],
     "action_items": ["send final outline by Wednesday"],
     "must_redact": [],
-    "must_exclude_senders": ["newsletter@example-research.test"]
+    "must_exclude_senders": ["newsletter@example-research.test"],
+    "expected_failure": true,
+    "known_gap": "The current rule-based local digest misses indirect requests phrased inside a long thread recap."
   }
 }

@@ -61,6 +61,10 @@ export async function judgeCase(testCase, output) {
   return parseJudgeJson(extractText(payload));
 }
 
+export function judgeModelName() {
+  return JUDGE_MODEL;
+}
+
 function extractText(payload) {
   if (payload.output_text) return payload.output_text;
   const chunks = [];
