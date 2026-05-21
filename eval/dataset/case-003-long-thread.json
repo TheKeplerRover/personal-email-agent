@@ -1,0 +1,26 @@
+{
+  "id": "case-003-long-thread",
+  "inbox": [
+    {
+      "from": "nora@example.com",
+      "subject": "Re: Research plan",
+      "body": "Thread recap: we discussed scope, notes, and references. The only open item is whether you can send the final outline by Wednesday so I can review it Thursday morning."
+    },
+    {
+      "from": "nora@example.com",
+      "subject": "Re: Research plan",
+      "body": "Adding one more thought to the thread. Please ignore the old attachment; the final outline is the source of truth."
+    },
+    {
+      "from": "newsletter@example-research.test",
+      "subject": "Weekly research roundup",
+      "body": "Ten papers, three webinars, and a survey invitation. Unsubscribe at any time."
+    }
+  ],
+  "expect": {
+    "important_senders": ["nora@example.com"],
+    "action_items": ["send final outline by Wednesday"],
+    "must_redact": [],
+    "must_exclude_senders": ["newsletter@example-research.test"]
+  }
+}

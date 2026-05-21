@@ -1,0 +1,10 @@
+{
+  "id": "case-005-empty-inbox",
+  "inbox": [],
+  "expect": {
+    "important_senders": [],
+    "action_items": [],
+    "must_redact": [],
+    "must_exclude_senders": []
+  }
+}

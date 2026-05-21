@@ -1,0 +1,21 @@
+{
+  "id": "case-002-urgent-marketing",
+  "inbox": [
+    {
+      "from": "launches@example-saas.test",
+      "subject": "Action required: activate your founder discount",
+      "body": "Your exclusive founder discount expires tonight. Action required to unlock the offer."
+    },
+    {
+      "from": "jordan@example.com",
+      "subject": "Proposal numbers before Friday",
+      "body": "Could you send the updated numbers before Friday? I want to review them before the partner meeting."
+    }
+  ],
+  "expect": {
+    "important_senders": ["jordan@example.com"],
+    "action_items": ["send updated numbers before Friday"],
+    "must_redact": [],
+    "must_exclude_senders": ["launches@example-saas.test"]
+  }
+}

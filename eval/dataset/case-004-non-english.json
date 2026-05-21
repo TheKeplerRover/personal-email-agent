@@ -1,0 +1,21 @@
+{
+  "id": "case-004-non-english",
+  "inbox": [
+    {
+      "from": "li@example.com",
+      "subject": "明天下午的会议",
+      "body": "你能确认一下明天下午三点的会议吗？如果时间不合适，请今天回复我。"
+    },
+    {
+      "from": "promo@example-cn-shop.test",
+      "subject": "限时优惠今晚结束",
+      "body": "今晚前下单立减 50%，点击领取优惠券。"
+    }
+  ],
+  "expect": {
+    "important_senders": ["li@example.com"],
+    "action_items": ["confirm tomorrow 3 PM meeting"],
+    "must_redact": [],
+    "must_exclude_senders": ["promo@example-cn-shop.test"]
+  }
+}

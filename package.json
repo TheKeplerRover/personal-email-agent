@@ -9,6 +9,8 @@
     "digest": "node digest.mjs --days 1",
     "digest:week": "node digest.mjs --days 7",
     "demo": "node demo/demo-digest.mjs",
+    "eval": "node eval/run.mjs",
+    "eval:judge": "node eval/run.mjs --judge",
     "check": "node --check auth.mjs && node --check mail.mjs && node --check digest.mjs",
     "check:worker": "npm --prefix cloudflare-worker run check",
     "check:all": "npm run check && npm run check:worker"

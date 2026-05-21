@@ -52,6 +52,27 @@ Run syntax checks:
 npm run check:all
 ```
 
+## Evaluation
+
+This repo includes a small synthetic eval harness for the inbox triage path:
+
+```bash
+npm run eval
+```
+
+Current deterministic eval result:
+
+```text
+cases: 5
+passed: 5
+pass_rate: 1.000
+secret_leak_count: 0
+avg_important_sender_recall: 1.000
+avg_action_item_recall: 1.000
+```
+
+The dataset covers OTP/passcode redaction, urgent-looking marketing, long threads, non-English action mail, and an empty inbox. The default eval is rule-based and token-free. Optional LLM-as-judge mode is available with `npm run eval:judge`.
+
 ## Local Setup
 
 1. Create a Microsoft app registration.
