@@ -69,3 +69,5 @@ The eval intentionally includes known-gap cases instead of forcing a perfect sco
 - Non-English action requests are not reliably identified by the local rule-based digest.
 
 These are marked with `expected_failure` in the dataset and reported as `known-gap` rather than hidden.
+
+These gaps are limitations of the local rule-based triage layer, not expected failures of the hosted AI summary path. The deterministic layer is meant to cover safety and basic routing invariants such as redaction, sender filtering, and obvious action capture. Deeper semantic understanding, including long-thread interpretation and multilingual action extraction, is handled in the hosted workflow by the LLM summarization layer.

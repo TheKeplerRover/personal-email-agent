@@ -74,7 +74,7 @@ avg_important_sender_recall: 0.600
 avg_action_item_recall: 0.600
 ```
 
-The dataset covers OTP/passcode redaction, urgent-looking marketing, long threads, non-English action mail, and an empty inbox. The default eval is rule-based and token-free. Two cases are intentionally marked as known gaps: indirect requests buried inside long thread recaps and non-English action mail. Optional LLM-as-judge mode is available with `npm run eval:judge`.
+The dataset covers OTP/passcode redaction, urgent-looking marketing, long threads, non-English action mail, and an empty inbox. The default eval is rule-based and token-free. Two cases are intentionally marked as known gaps in the local triage layer: indirect requests buried inside long thread recaps and non-English action mail. In the hosted workflow, deeper semantic understanding is handled by the LLM summarization layer. Optional LLM-as-judge mode is available with `npm run eval:judge`.
 
 ## Local Setup
 
